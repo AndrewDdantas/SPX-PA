@@ -15,6 +15,7 @@ backup_path = "dados_cache.csv"
 # Função cacheada de carregamento
 @st.cache_data(ttl=300)  # cache por 5 minutos
 def carregar_dados():
+    json_key["private_key"] = json_key["private_key"].replace("\\n", "\n")
     cred = ServiceAccountCredentials.from_json_keyfile_dict(
         json_key, scopes=Scopes)
     gc = gspread.authorize(cred)

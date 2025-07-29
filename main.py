@@ -76,7 +76,8 @@ if not st.session_state.liberar_consulta:
 # Carregando dados
 try:
     df = carregar_dados()
-except Exception:
+except Exception as e:
+    print(f"Erro ao carregar dados: {e}")
     st.warning(
         "⚠️ Falha na API do Google Sheets. Dados carregados do backup local.")
     if os.path.exists(backup_path):
